@@ -55,12 +55,25 @@ export default class Calculator extends Component {
                     <TextPlaceHolder input={"Abertura(m2)"} callbackFromParent={(value) => this.medidaAbertura(value)}/>
                     {
                       this.state.resultado ? 
-                      <View style={{height: "100%", width: "80%",}}>
-                        <View style={{width: "100%", height: "80%"}}>
+                      <View style={{height: "30%", width: "80%"}}>
+                        <View style={{width: "100%", height: "50%"}}>
                           <Text
                           style={styles.textIsideCard}
                           >
                             Tijolos
+                          </Text>
+                          <View style={styles.resultContainer}>
+                            <Text  
+                              style={styles.TextButton}
+                            >{this.state.tijolos} Tijolos</Text>
+                          </View>
+                        </View>
+                        
+                        <View style={{width: "100%", height: "50%"}}>
+                          <Text
+                          style={styles.textIsideCard}
+                          >
+                            Argamassa
                           </Text>
                           <View style={styles.resultContainer}>
                             <Text  
@@ -120,7 +133,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%",
     height: "100%",
-    padding: "8%"
+    padding: "6%"
   },
   button: {
     width: "80%",
@@ -138,8 +151,8 @@ const styles = StyleSheet.create({
   },
   resultContainer: {
     width: "100%",
-    height: "10%",
-    marginBottom: "8%",
+    height: "60%",
+    marginBottom: "2%",
     backgroundColor: '#FFC0A2',
     borderRadius: 8,
     shadowColor: 'black',

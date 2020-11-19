@@ -35,7 +35,7 @@ export default class TextPlaceHolder extends Component {
                     onChangeText={text => this.onChangeText(text)}
                     value={this.state.category}
                     placeholder={this.props.input}
-                    keyboardType={"number-pad"}
+                    //keyboardType={"number-pad"}
                     />
                 :<Text 
                     style={styles.text}>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   containerIntupt: {
     width: "80%",
     height: "7%",
-    marginBottom: "8%",
+    marginBottom: "6%",
     backgroundColor: '#EFE7BB',
     borderRadius: 8,
     shadowColor: 'black',

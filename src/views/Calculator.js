@@ -11,6 +11,8 @@ export default class Calculator extends Component {
           comprimento: "",
           area: "",
           abertura: "",
+          tijolos: "",
+          resultado: false
         };
       }
       
@@ -32,8 +34,9 @@ export default class Calculator extends Component {
     calcular() {
       var tijolos = 1/(((parseInt(this.state.comprimento.category) / 100) + 0.01) * ((parseInt(this.state.altura.category) / 100) + 0.01))
       tijolos = tijolos * (this.state.area.category - this.state.abertura.category)
-
+      this.setState({tijolos: tijolos})
       console.log(tijolos)
+      this.setState({resultado: true})
     }
 
     render(){
@@ -50,10 +53,27 @@ export default class Calculator extends Component {
         
                     <Text style={styles.textIsideCard}>Abertura da parede</Text>
                     <TextPlaceHolder input={"Abertura(m2)"} callbackFromParent={(value) => this.medidaAbertura(value)}/>
-        
-                    <TouchableOpacity style={styles.button} onPress={() => this.calcular()}>
+                    {
+                      this.state.resultado ? 
+                      <View style={{height: "100%", width: "80%",}}>
+                        <View style={{width: "100%", height: "80%"}}>
+                          <Text
+                          style={styles.textIsideCard}
+                          >
+                            Tijolos
+                          </Text>
+                          <View style={styles.resultContainer}>
+                            <Text  
+                              style={styles.TextButton}
+                            >{this.state.tijolos} Tijolos</Text>
+                          </View>
+                        </View>
+                      </View>
+                      :<TouchableOpacity style={styles.button} onPress={() => this.calcular()}>
                         <Text style={styles.TextButton}>Calcular</Text>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+                    }
+
                 </View>
             </View>
           );
@@ -70,7 +90,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "80%",
-    height: "80%",
+    height: "90%",
     borderRadius: 20,
     backgroundColor: 'white',
     alignItems: 'center',
@@ -115,5 +135,18 @@ const styles = StyleSheet.create({
         height: 4,
       },
     shadowOpacity: 0.4,
-  }
+  },
+  resultContainer: {
+    width: "100%",
+    height: "10%",
+    marginBottom: "8%",
+    backgroundColor: '#FFC0A2',
+    borderRadius: 8,
+    shadowColor: 'black',
+    shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+    shadowOpacity: 0.4,
+  },
 });

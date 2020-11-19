@@ -9,9 +9,11 @@ export default class Calculator extends Component {
         this.state = {
           altura: "",
           comprimento: "",
+          largura: "",
           area: "",
           abertura: "",
           tijolos: "",
+          argamassa: "",
           resultado: false
         };
       }
@@ -24,6 +26,9 @@ export default class Calculator extends Component {
     medidaComprimento(comprimento){
         this.setState({comprimento: comprimento})
     }
+    medidaLargura (largura) {
+      this.setState({largura: largura})
+    }
     medidaArea(area){
         this.setState({area: area})
     }
@@ -32,10 +37,12 @@ export default class Calculator extends Component {
     }
 
     calcular() {
-      var tijolos = 1/(((parseInt(this.state.comprimento.category) / 100) + 0.01) * ((parseInt(this.state.altura.category) / 100) + 0.01))
-      tijolos = tijolos * (this.state.area.category - this.state.abertura.category)
+      var tijolosM2 = 1/(((parseInt(this.state.comprimento.category) / 100) + 0.01) * ((parseInt(this.state.altura.category) / 100) + 0.01))
+      var argamassa = (1 - tijolosM2*(this.state.comprimento.category /100 * this.state.altura.category / 100)) * this.state.largura.category / 100
+      var tijolos = tijolosM2 * (this.state.area.category - this.state.abertura.category)
+      this.setState({argamassa: argamassa})
       this.setState({tijolos: tijolos})
-      console.log(tijolos)
+      console.log(argamassa)
       this.setState({resultado: true})
     }
 
@@ -47,6 +54,7 @@ export default class Calculator extends Component {
                     <Text style={styles.textIsideCard}>Medidas do bloco</Text>
                     <TextPlaceHolder input={"Altura"} callbackFromParent={(value) => this.medidaAltura(value)}/>
                     <TextPlaceHolder input={"Comprimento"} callbackFromParent={(value) => this.medidaComprimento(value)}/>
+                    <TextPlaceHolder input={"largura"} callbackFromParent={(value) => this.medidaLargura(value)}/>
 
                     <Text style={styles.textIsideCard}>Área da parede</Text>
                     <TextPlaceHolder input={"Área(m2)"} callbackFromParent={(value) => this.medidaArea(value)}/>
@@ -78,7 +86,7 @@ export default class Calculator extends Component {
                           <View style={styles.resultContainer}>
                             <Text  
                               style={styles.TextButton}
-                            >{this.state.tijolos} Tijolos</Text>
+                            >{this.state.argamassa}m3/m2</Text>
                           </View>
                         </View>
                       </View>
@@ -120,7 +128,7 @@ const styles = StyleSheet.create({
   textIsideCard: {
       color: "#FFC0A2",
       fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 16,
       textAlign: "left",
       width: "80%",
       marginBottom: "5%",
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
   TextButton: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 16,
     textAlign: "center",
     width: "100%",
     height: "100%",

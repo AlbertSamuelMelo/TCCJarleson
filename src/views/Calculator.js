@@ -31,7 +31,8 @@ export default class Calculator extends Component {
 
     calcular() {
       var tijolos = 1/(((parseInt(this.state.comprimento.category) / 100) + 0.01) * ((parseInt(this.state.altura.category) / 100) + 0.01))
-      tijolos = tijolos * this.state.area.category
+      tijolos = tijolos * (this.state.area.category - this.state.abertura.category)
+
       console.log(tijolos)
     }
 

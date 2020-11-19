@@ -19,7 +19,7 @@ export default class Calculator extends Component {
         this.setState({altura: altura})
     }
 
-    medidacomprimento(comprimento){
+    medidaComprimento(comprimento){
         this.setState({comprimento: comprimento})
     }
     medidaArea(area){
@@ -30,8 +30,8 @@ export default class Calculator extends Component {
     }
 
     calcular() {
-        var tijolos = 1/((parseInt(comprimento) + 0.01) * (parseInt(altura) + 0.01))
-        console.log(tijolos)
+      var tijolos = 1/(((parseInt(this.state.comprimento.category) / 100) + 0.01) * ((parseInt(this.state.altura.category) / 100) + 0.01))
+      console.log(tijolos)
     }
 
     render(){
@@ -43,10 +43,10 @@ export default class Calculator extends Component {
                     <TextPlaceHolder input={"Altura"} callbackFromParent={(value) => this.medidaAltura(value)}/>
                     <TextPlaceHolder input={"Comprimento"} callbackFromParent={(value) => this.medidaComprimento(value)}/>
 
-                    <Text style={styles.textIsideCard}>Área do bloco</Text>
+                    <Text style={styles.textIsideCard}>Área da parede</Text>
                     <TextPlaceHolder input={"Área(m2)"} callbackFromParent={(value) => this.medidaArea(value)}/>
         
-                    <Text style={styles.textIsideCard}>Abertura do bloco</Text>
+                    <Text style={styles.textIsideCard}>Abertura da parede</Text>
                     <TextPlaceHolder input={"Abertura(m2)"} callbackFromParent={(value) => this.medidaAbertura(value)}/>
         
                     <TouchableOpacity style={styles.button} onPress={() => this.calcular()}>

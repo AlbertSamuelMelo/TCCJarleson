@@ -21,8 +21,9 @@ export default class TextPlaceHolder extends Component {
     onChangeText(text) {
         this.setState({
             category: text
-        })
-        sendAfterUpdate()
+      }, () => {
+        this.sendAfterUpdate()
+      })
     }
 
     render(){
@@ -34,7 +35,7 @@ export default class TextPlaceHolder extends Component {
                     onChangeText={text => this.onChangeText(text)}
                     value={this.state.category}
                     placeholder={this.props.input}
-                    // keyboardType={"number-pad"}
+                    keyboardType={"number-pad"}
                     />
                 :<Text 
                     style={styles.text}>

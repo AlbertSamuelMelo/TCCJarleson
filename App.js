@@ -3,11 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Calculator from './src/views/Calculator';
 import CalcularConcreto from './src/views/CalcularConcreto'
+import CalcularPisos from "./src/views/CalcularPisos"
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <CalcularConcreto/>
+      <CalcularPisos/>
     </View>
   );
 }

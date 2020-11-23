@@ -38,7 +38,8 @@ export default class CalcularConcreto extends Component {
     }
 
     calcular() {
-      var argamassa = (parseFloat (5 * this.state.areaPiso.category)) 
+      var argamassa = (parseFloat ((5 * this.state.areaPiso.category)))
+      argamassa = argamassa + 0.1 * argamassa
       var ceramicas = (parseFloat(1 / ((this.state.alturaCeramica.category / 100) * (this.state.larguraCeramica.category / 100))) * this.state.areaPiso.category)
       var rejunte = (parseFloat((this.state.alturaCeramica.category * 10 + this.state.larguraCeramica.category * 10) * 3 * 2 * 1.58) / ((this.state.alturaCeramica.category * 10) * (this.state.larguraCeramica.category * 10)) * this.state.areaPiso.category)
       this.setState({argamassa: argamassa})

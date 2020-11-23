@@ -5,11 +5,13 @@ import Calculator from './src/views/Calculator';
 import CalcularConcreto from './src/views/CalcularConcreto'
 import CalcularPisos from "./src/views/CalcularPisos"
 import CalculoPintura from "./src/views/CalculoPintura"
+import List from "./src/views/List"
+
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <CalculoPintura/>
+      <List data={["Parede", "Piso", "Concreto", "Reboco"]}/>
     </View>
   );
 }

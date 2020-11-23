@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
@@ -15,26 +16,33 @@ export default class List extends Component {
   }
 
   selectListItem(item) {
-    console.log(item)
-    // if(typeof(item) == "string") {
-    //     console.log("Selecionou Key", item)
-    //     this.props.navigation.push("List", {
-    //       key: item
-    //     })
-    // } else {
-    //     console.log("Selecionou Objeto", item)
-    // }
+    if(typeof(item) == "string") {
+        this.props.navigation.push(item, {
+          key: item
+        })
+    }
   }
 
   componentDidMount(){
     if(this.props.route.name == "Quantitativo"){
-      this.setState({data: ["Parede", "Piso", "Concreto", "Reboco"]})
+      this.setState({data: ["Parede", "Piso", "Concreto", "Pintura"]})
+    } else if(this.props.route.name == "Parede"){
+      this.setState({data: ["Tijolos"]})
+    } else if(this.props.route.name == "Piso"){
+      this.setState({data: ["Ceramica"]})
+    } else if(this.props.route.name == "Concreto"){
+      this.setState({data: ["Bloco de Concreto"]})
+    } else if(this.props.route.name == "Pintura"){
+      this.setState({data: ["Tinta"]})
     }
+
   }
 
   render(){
     return (
       <View style={styles.container}>
+          <StatusBar style="dark" />
+
           <SafeAreaView style={styles.safeArea}>
             <FlatList 
                 data={ this.state.data }

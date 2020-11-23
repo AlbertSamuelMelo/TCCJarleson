@@ -20,6 +20,30 @@ function ListScreen({ navigation, route }) {
   );
 }
 
+function CalculatorPisoScreen({ navigation, route }) {
+  return (
+    <View style={styles.container}>
+      <CalcularPisos navigation={navigation} route={route}/>
+    </View>
+  );
+}
+
+function CalculatorPinturaScreen({ navigation, route }) {
+  return (
+    <View style={styles.container}>
+      <CalculoPintura navigation={navigation} route={route}/>
+    </View>
+  );
+}
+
+function CalculatorBlocoScreen({ navigation, route }) {
+  return (
+    <View style={styles.container}>
+      <CalcularConcreto navigation={navigation} route={route}/>
+    </View>
+  );
+}
+
 function CalculatorScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
@@ -33,8 +57,17 @@ function CreateNavigator(){
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Quantitativo">
         <Stack.Screen name="Quantitativo" component={ListScreen} />
-        <Stack.Screen name="Materiais" component={ListScreen} />
-        <Stack.Screen name="Dimenções" component={CalculatorScreen} />
+        
+        <Stack.Screen name="Parede" component={ListScreen} />
+        <Stack.Screen name="Piso" component={ListScreen} />
+        <Stack.Screen name="Concreto" component={ListScreen} />
+        <Stack.Screen name="Pintura" component={ListScreen} />
+
+        <Stack.Screen name="Tijolos" component={CalculatorScreen} />
+        <Stack.Screen name="Ceramica" component={CalculatorPisoScreen} />
+        <Stack.Screen name="Bloco de Concreto" component={CalculatorBlocoScreen} />
+        <Stack.Screen name="Tinta" component={CalculatorPinturaScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

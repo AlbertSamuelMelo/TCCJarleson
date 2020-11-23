@@ -49,7 +49,7 @@ export default class Calculator extends Component {
     render(){
         return (
             <View style={styles.container}>
-              <StatusBar style="auto" />
+              <StatusBar style="dark" />
                 <View style={styles.card}>
                     <Text style={styles.textIsideCard}>Medidas do bloco</Text>
                     <TextPlaceHolder input={"Altura"} callbackFromParent={(value) => this.medidaAltura(value)}/>

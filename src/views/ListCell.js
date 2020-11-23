@@ -23,22 +23,28 @@ export default class ListCell extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    height: "90%",
     backgroundColor: '#E3D68D',
     alignItems: 'center',
     justifyContent: "space-around",
     flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "gray",
+    margin: "5%",
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+    shadowOpacity: 0.4,
   },
   text: {
-    width: "50%",
-    height: "30%",
-    textAlign: "right",
+    width: "70%",
+    height: "100%",
+    textAlign: "left",
     fontSize: 25,
     padding: "5%",
-    marginLeft: "5%"
+    marginLeft: "5%",
+    color: "white",
+    fontWeight: "bold"
   },
   imageIcon: {
     width: "30%", 

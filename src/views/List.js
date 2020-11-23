@@ -10,6 +10,7 @@ export default class List extends Component {
         keysOnStorage: [""],
         storage: false,
         dataOnStorage: [],
+        data:[]
     };
   }
 
@@ -25,12 +26,18 @@ export default class List extends Component {
     // }
   }
 
+  componentDidMount(){
+    if(this.props.route.name == "Quantitativo"){
+      this.setState({data: ["Parede", "Piso", "Concreto", "Reboco"]})
+    }
+  }
+
   render(){
     return (
       <View style={styles.container}>
           <SafeAreaView style={styles.safeArea}>
             <FlatList 
-                data={ this.props.data }
+                data={ this.state.data }
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item, index, separators}) => 
                 <TouchableHighlight
@@ -43,7 +50,6 @@ export default class List extends Component {
                 </TouchableHighlight>}
             />
           </SafeAreaView>
-
       </View>
     );
   }
@@ -52,10 +58,18 @@ export default class List extends Component {
 const styles = StyleSheet.create({
   container: {
     width: "90%",
-    height: "125%",
+    height: "90%",
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 10,
+    padding: "5%",
+    shadowColor: 'black',
+    shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+    shadowOpacity: 0.4,
   },
   safeArea: {
     width: "100%",
